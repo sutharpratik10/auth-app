@@ -7,11 +7,11 @@ import { Button } from "@/components/ui/button";
  export const Social = () => {
     return(
         <div className="flex items-center w-full gap-x-2">
-            <Button size={"lg"} onClick={()=>{}} variant={"default"}>
+            <Button size={"lg"} onClick={()=>{}} variant={"default"} className="flex items-center w-full gap-x-2">
                 <FcGoogle/>
             </Button>
-            <Button size={"lg"} onClick={()=>{}} variant={"default"}>
-                <FaGithub/>
+            <Button size={"lg"} onClick={()=>{}} variant={"default"} className="flex items-center w-full gap-x-2">
+                <FaGithub/> 
             </Button>
         </div>
     )
