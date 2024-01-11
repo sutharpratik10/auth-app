@@ -22,9 +22,9 @@ export const login = async (values: z.infer<typeof LoginSchema>)  => {
     }
     
     // Check if the email is not verified
-    // if(!existingUser.emailVerified){
-    //     return {error:"Email is not verified!"};
-    // }
+    if(!existingUser.emailVerified){
+        return {error:"Email is not verified!"};
+    }
 
     try{
         await signIn("credentials", {
