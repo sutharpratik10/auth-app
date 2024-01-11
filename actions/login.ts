@@ -20,6 +20,11 @@ export const login = async (values: z.infer<typeof LoginSchema>)  => {
     if (!existingUser) {
         return { error: "Account is not registered." };
     }
+    
+    // Check if the email is not verified
+    // if(!existingUser.emailVerified){
+    //     return {error:"Email is not verified!"};
+    // }
 
     try{
         await signIn("credentials", {
