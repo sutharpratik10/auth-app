@@ -8,7 +8,7 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 
  export const Social = () => {
-    const onClick = (provider: "google" | "Github") => {
+    const onClick = (provider: "google" | "github") => {
         signIn(provider,{
             callbackUrl: DEFAULT_LOGIN_REDIRECT,
         });
@@ -24,7 +24,7 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
             </Button>
             <Button 
                 size={"lg"} 
-                onClick={()=>onClick("Github")} 
+                onClick={()=>onClick("github")} 
                 variant={"default"} 
                 className="flex items-center w-full gap-x-2">
                 <FaGithub/> 
