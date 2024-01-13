@@ -20,7 +20,6 @@ import { Button } from "@/components/ui/button"
 import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { login } from "@/actions/login"
-import { error } from "console"
 
 export const LoginForm = () => {
     const searchParams = useSearchParams();
@@ -47,8 +46,7 @@ export const LoginForm = () => {
             login(values)
             .then ((data) => {
                 setError(data?.error);
-                //TODO: Add when we add 2FA
-                // setSuccess(data?.success);
+                setSuccess(data?.success);
             })
         });
     }
@@ -100,7 +98,7 @@ export const LoginForm = () => {
                                     </FormItem>
                                 )}
                             />
-                            <FormError message={error || urlError}/>
+                            <FormError message={error}/>
                             <FormSuccess message={success}/>
                             <Button
                              disabled={isPending} type="submit" className="w-full">

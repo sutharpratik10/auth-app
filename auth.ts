@@ -25,14 +25,20 @@ export const {
     }
   },
   callbacks:{
-    // async signIn({user}){
-    //   const existingUser = await getUserById(user.id)
+    async signIn({user, account}){
+      const existingUser = await getUserById(user.id);
+      
+      //Allow OAuth without email verification
+      if(account?.provider !== "credentials") return true;
 
-    //   if(!existingUser || !existingUser.emailVerified){
-    //     return false;
-    //   }
-    //   return true;
-    // },
+      //prevent signin without Email verification
+      if(!existingUser || !existingUser.emailVerified){
+        return false;
+      }
+      return true;
+
+      //TODO 2FA check
+    },
 
     async session ({token, session}){
      if (token.sub && session.user){
