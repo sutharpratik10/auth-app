@@ -22,13 +22,6 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
                 className="flex items-center w-full gap-x-2">
                 <FcGoogle/>
             </Button>
-            <Button 
-                size={"lg"} 
-                onClick={()=>onClick("github")} 
-                variant={"default"} 
-                className="flex items-center w-full gap-x-2">
-                <FaGithub/> 
-            </Button>
         </div>
     )
  }
