@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import {signIn} from "next-auth/react"
 
 import {FcGoogle} from "react-icons/fc";
-import {FaGithub} from "react-icons/fa";
+import {FaGit, FaGithub} from "react-icons/fa";
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
 
 
@@ -21,6 +21,13 @@ import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
                 variant={"default"} 
                 className="flex items-center w-full gap-x-2">
                 <FcGoogle/>
+            </Button>
+            <Button 
+                size={"lg"} 
+                onClick={()=>onClick("github")} 
+                variant={"default"} 
+                className="flex items-center w-full gap-x-2">
+                <FaGithub/>
             </Button>
         </div>
     )
