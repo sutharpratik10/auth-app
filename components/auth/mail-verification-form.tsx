@@ -37,7 +37,7 @@ export const MailVerificationForm = () => {
 
     return(
         <CardWrapper
-        headerLable="conrming your verification"
+        headerLable="confirming your verification"
         backButtonLabel="back to login"
         backButtonHref="/auth/login"
         >

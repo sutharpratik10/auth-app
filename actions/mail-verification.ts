@@ -32,15 +32,16 @@ export const mailVerification = async (token: string) => {
     },
   });
 
-  setTimeout(async () => {
-    // Delete token after 5 seconds
-    await db.verificationToken.delete({
-      where: { id: existnigToken.id },
-    });
-  }, 5000);
-//   await db.verificationToken.delete({
-//     where: { id: existnigToken.id },
-//   });
+   // Delete token after 5 seconds of verification
+  // setTimeout(async () => {
+  //  
+  //   await db.verificationToken.delete({
+  //     where: { id: existnigToken.id },
+  //   });
+  // }, 5000);
+  await db.verificationToken.delete({
+    where: { id: existnigToken.id },
+  });
 
   return { success: "Email verified successfully!" };
 }

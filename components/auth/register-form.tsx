@@ -78,7 +78,7 @@ export const RegisterForm = () => {
                                         <FormMessage />
                                     </FormItem>
                                 )}
-                            />
+                            /> 
 
                             <FormField
                                 control={form.control} 
@@ -112,6 +112,7 @@ export const RegisterForm = () => {
                                                 type="password"
                                             />
                                         </FormControl>
+                                        
                                         <FormMessage />
                                     </FormItem>
                                 )}
