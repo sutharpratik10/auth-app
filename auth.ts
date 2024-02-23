@@ -35,13 +35,10 @@ export const {
 
       //prevent signin without email verification
       if(!existingUser?.emailVerified) return false;
-      
 
       //2FA check
       if(existingUser.isTwoFactorEnabled){
         const twoFactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id);
-        
-        console.log("2FA:",{twoFactorConfirmation});
 
         if (!twoFactorConfirmation) return false;
 

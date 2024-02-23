@@ -22,7 +22,7 @@ export const login = async (values: z.infer<typeof LoginSchema>)  => {
     const {email, password, code} = validatedFields.data;
     const existingUser = await getUserByEmail(email);
 
-     // Check if the user does not exist
+    // Check if the user does not exist
     if (!existingUser) {
         return { error: "Account is not registered." };
     }
@@ -38,12 +38,16 @@ export const login = async (values: z.infer<typeof LoginSchema>)  => {
     if (existingUser.isTwoFactorEnabled && existingUser.email){
         if(code){
             const TwoFactorToken = await getTwoFactorTokenByEmail(existingUser.email);
+
             if(!TwoFactorToken || TwoFactorToken.token !== code){
                 return {error: "Invalid Code!"}
             }
             const hasExpired = new Date() > new Date(TwoFactorToken.expires);
 
             if(hasExpired){
+                await db.twoFactorToken.delete({
+                    where: { id: TwoFactorToken.id },
+                });
                 return {error: "Code has expired!"}
             }
 
