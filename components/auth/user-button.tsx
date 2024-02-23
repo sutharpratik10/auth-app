@@ -16,14 +16,14 @@ import { LogoutButton } from "@/components/auth/logout-button";
 export const UserButton = () => {
     const user = useCurrentUser();
     const name = user?.name || '';
-    const firstTwoChars = name.substring(0, 2).toUpperCase();
+    const firstChar = name.substring(0, 1).toUpperCase();
     return(
         <DropdownMenu>
             <DropdownMenuTrigger>
                 <Avatar>
                     {/* <AvatarImage src={user?.image || ''}/> */}
                     <AvatarFallback className="bg-slate-900 items-center justify-center">
-                        <p className="text-white font-normal text-xl">{firstTwoChars}</p>
+                        <p className="text-white font-normal text-2xl">{firstChar}</p>
                     </AvatarFallback>
                 </Avatar>
             </DropdownMenuTrigger>
