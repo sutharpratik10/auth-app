@@ -26,7 +26,7 @@ model User {
   accounts      Account[]
   sessions      Session[]
   isTwoFactorEnabled   Boolean  @default(false)
-  twofactorConfirmation TwoFactorConfirmation?
+  twoFactorConfirmation TwoFactorConfirmation?
 }
 
 model Account {
