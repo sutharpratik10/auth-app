@@ -12,15 +12,18 @@ const ClientPage = () => {
     return ( 
         <>
             <Card className="w-1/2 items-center justify-center text-center">
-            <CardHeader className="text-2xl font-semibold text-center">
-                👨Client
-            </CardHeader>
-            <CardContent className="space-y-4 items-center justify-center">
-                <RoleGate allowedRole={UserRole.USER && UserRole.ADMIN}>
-                    <FormSuccess message="🥳You are allowed to see this content."/>
-                </RoleGate>
-            </CardContent>
-        </Card>
+                <CardHeader className="text-2xl font-semibold text-center">
+                    📱Client Component
+                </CardHeader>
+                <CardContent className="space-y-4 items-center justify-center">
+                    <RoleGate allowedRole={UserRole.USER || UserRole.ADMIN}>
+                        <FormSuccess message="🥳You are allowed to see this content."/>
+                        <UserInfo
+                        lable=""
+                        user={user}/>
+                    </RoleGate>
+                </CardContent>
+            </Card>
         </>    
      );
 }

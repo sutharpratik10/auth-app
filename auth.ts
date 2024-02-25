@@ -6,6 +6,7 @@ import { getUserById } from "@/data/user"
 import { string } from "zod"
 import { UserRole } from "@prisma/client"
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation"
+import { getAccountByUserId } from "./data/account"
 
 export const {
   handlers: { GET, POST },  
@@ -63,6 +64,12 @@ export const {
      if (session.user){
       session.user.isTwoFactorEnabled = token.isTwoFactorEnabled as boolean;
      }
+     if(session.user){
+      session.user.name = token.name;
+      session.user.email = token.email;
+      session.user.isOAuth = !!token.isOAuth; // "!!" is  a boolean here
+      //session.user.image = token.image;
+     }
       return session;
     },
      async jwt({token}){
@@ -72,7 +79,13 @@ export const {
 
       if(!existingUser) return token;
 
+      const existingAccount = await getAccountByUserId(existingUser.id);
+
+      token.isOAuth = !!existingAccount; // "!!" is  a boolean here
+      token.name = existingUser.name;
+      token.email = existingUser.email;
       token.role = existingUser.role;
+      token.image = existingUser.image;
       token.isTwoFactorEnabled = existingUser.isTwoFactorEnabled;
       return token;
      }
