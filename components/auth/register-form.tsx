@@ -21,6 +21,7 @@ import { FormError } from "@/components/form-error"
 import { FormSuccess } from "@/components/form-success"
 import { register } from "@/actions/register"
 import { error } from "console"
+import { BarLoader } from "react-spinners"
 
 export const RegisterForm = () => {
     const [error, setError] = useState<string | undefined>("");
@@ -117,6 +118,11 @@ export const RegisterForm = () => {
                                     </FormItem>
                                 )}
                             />
+                            {isPending && (
+                            <div className="flex justify-center">
+                                <BarLoader />
+                            </div>
+                            )}
                             <FormError message={error}/>
                             <FormSuccess message={success}/>
                             <Button

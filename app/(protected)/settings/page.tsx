@@ -41,7 +41,8 @@ const SettingsPage = () => {
     });
      const onSubmit = (values: z.infer<typeof SettingsSchema>) => {
         startTransition(() => {
-            settings(values).then((data) => 
+            const formData = { ...values, isTwoFactorEnabled: form.getValues('isTwoFactorEnabled') };
+            settings(formData).then((data) => 
             {
                 if (data.error) {
                     toast.error("😔not updated please try again later!")

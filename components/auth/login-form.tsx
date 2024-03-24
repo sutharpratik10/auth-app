@@ -5,6 +5,7 @@ import { useState, useTransition } from "react"
 import { useSearchParams } from "next/navigation"
 import { zodResolver } from "@hookform/resolvers/zod"
 import Link from "next/link"
+import { BarLoader } from "react-spinners";
 
 import { LoginSchema } from "@/schemas"
 import { Input } from "@/components/ui/input"
@@ -58,8 +59,8 @@ export const LoginForm = () => {
                     setShowTwoFactor(true);
                 }
                 
-                // setError(data?.error);
-                // setSuccess(data?.success);
+                setError(data?.error);
+                setSuccess(data?.success);
             })
             .catch(() => setError("Something went wrong."))
         });
@@ -149,6 +150,11 @@ export const LoginForm = () => {
                                         )}
                                     />
                                 </>
+                            )}
+                            {isPending && (
+                            <div className="flex justify-center">
+                                <BarLoader />
+                            </div>
                             )}
                             <FormError message={error || urlError} />
                             <FormSuccess message={success}/>
