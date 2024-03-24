@@ -3,7 +3,7 @@ import { Aleo } from "next/font/google"
 
 import {cn} from "@/lib/utils";
 import {Button} from "@/components/ui/button"
-import { LoginButton } from '@/components/ui/auth/login-button';
+import { LoginButton } from '@/components/auth/login-button';
 
 const font = Aleo({
   subsets:["latin"],
@@ -12,15 +12,15 @@ const font = Aleo({
 
 export default function Home() {
   return (
-   <main className='flex h-full flex-col items-center justify-center bg-gradient-to-r from-amber-50 to-amber-100'>
+   <main className='flex h-full flex-col items-center justify-center bg-gradient-to-r from-slate-900 to-slate-950'>
     <div className='space-y-6 text-center'>
-      <h1 className={cn('text-6xl font-semibold text-zinc-900 drop-shadow-md', font.className )}>
+      <h1 className={cn('text-6xl font-semibold text-white drop-shadow-md', font.className )}>
         🔐Auth
       </h1>
-      <p className='text-zinc-900 text-lg'>Simple Authentication service</p>
+      <p className='text-white text-lg'>Simple Authentication service</p>
       <div>
         <LoginButton>
-          <Button variant="default">
+          <Button variant="secondary" className='font-bold'>
             SignIn
           </Button>
         </LoginButton>
